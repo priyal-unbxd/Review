@@ -1,0 +1,92 @@
+
+{% extends 'base.html' %}
+{%load static %}
+
+{% block scripts%}
+<script src="{% static 'js/detail.js' %}" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock scripts%} 
+
+
+{% block body %}
+
+<!-- <--Modal-->
+
+
+<div class="modal fade" id="review-form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><b>What's Your Rating?</b></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          {%csrf_token%}
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Rating</label>
+            <div>
+            <a><i class= "fa fa-star-o  stars" style="color:orange" id="1"></i></a>
+            <a><i  class= "fa fa-star-o stars" style="color:orange" id="2"></i></a>
+            <a><i  class= "fa fa-star-o stars" style="color:orange" id="3"></i></a>
+            <a><i  class= "fa fa-star-o stars" style="color:orange" id="4"></i></a>
+            <a ><i  class= "fa fa-star-o stars" style="color:orange" id="5"></i></a>
+          </div>
+          </div>
+          <div class="mb-3">
+            <label for="comment" class="col-form-label"><b>Review</b></label>
+            <textarea class="form-control" id="comment" placeholder="Start Typing..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submit-btn">Submit Review</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container my-4">
+
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-auto">
+          <h3>{{prod.name}}</h3>
+        </div>
+        <div class="col-auto pr-3">
+          <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#review-form" data-bs-whatever="@mdo">Add a Review</a>
+        </div>
+        <div class="col-auto pr-3">
+          <a class="btn btn-danger" id="back-btn">Back</a>
+        </div>
+        
+      </div>
+      
+      <b>Average Rating</b><p>{{prod.calculateAvgRating}}</p>
+    </div>
+  </div>
+  <div class="container my-4">
+    
+  {% for i in prodRatings%}
+  <div class="card my-3">
+    <div class="card-header" data-rating="{{i.rating}}">
+      
+    </div>
+    <div class="card-body">
+      <!-- <h5 class="card-title">Special title treatment</h5> -->
+      <p class="card-text">{{i.comment}}</p>
+      <a href="#" class="btn btn-success btn-sm">Helpful</a>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>
+</div>
+
+{% endblock body %}

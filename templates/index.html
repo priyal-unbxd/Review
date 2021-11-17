@@ -10,30 +10,23 @@
 
 {% block body %}
 <div class="container" id="cont">
- 
+
     {% for item in allProds%}
     <div class="card my-5 product-list-card" data-title="{{item.name}}" data-id={{item.id}} data-rating={{item.avgRating}} style="width: 38rem;" >
-        
+
         <div class="card-body">
           <h5 class="card-title">{{item.name}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Average Rating</h6>
           <h6 class="card-subtitle mb-2 text-muted">{{item.avgRating}}</h6>
           <div class="rating-box" id="{{item.name}}{{item.id}}id">
             
-            <!-- <span id="{{i}}" ><i style="color:orange" class ="fa fa-star"></i></span>
-            <span id ="{{i}}" ><i  class ="fa fa-star-o"></i></span>
-            <span id="2" ><i style="color:orange" class ="fa fa-star-o"></i></span>
-            <span id="3" ><i class ="fa fa-star"></i></span>
-            <span id="4" ><i  class ="fa fa-star-o"></i></span>
-            <span id="5" ><i  class ="fa fa-star-o"></i></span> -->
-            
-        </div>
+          </div>
         
         
          
           <div class="my-3">
-          <button type="button" class="btn btn-primary btn-sm">Product Page</button>
-          <button type="button" class="btn btn-success btn-sm">Add a review</button>
+          <a class="btn btn-primary btn-sm" href="{{item.id}}/">Product Page</a>
+          <a class="btn btn-success btn-sm" href="">Add a review</a>
         </div>
         </div>
       </div>
