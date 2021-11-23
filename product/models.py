@@ -19,7 +19,7 @@ class Product(models.Model):
         if count > 0:
             for r in allRatings:
                 total = total + r.rating
-            return (total / count)
+            return round((total / count),1)
         else:
             return 0
 

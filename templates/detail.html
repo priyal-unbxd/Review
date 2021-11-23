@@ -2,17 +2,17 @@
 {% extends 'base.html' %}
 {%load static %}
 
+<!-- Scripts for the page included here -->
 {% block scripts%}
 <script src="{% static 'js/detail.js' %}" defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {% endblock scripts%} 
 
 
+<!-- Body tag content -->
 {% block body %}
 
-<!-- <--Modal-->
-
-
+<!-- Modal starts here -->
 <div class="modal fade" id="review-form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -48,45 +48,55 @@
   </div>
 </div>
 
-
+<!-- Modal ends here -->
 
 <div class="container my-4">
-
-<div class="card">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-auto">
-          <h3>{{prod.name}}</h3>
+    <div class="card mb-3" style="max-width: 1200px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="..." class="img-fluid rounded-start" alt="...">
         </div>
-        <div class="col-auto pr-3">
-          <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#review-form" data-bs-whatever="@mdo">Add a Review</a>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{prod.name}}</h5>
+            <p class="card-text">{{prod.calculateAvgRating}} out of 5</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <div class="col-auto pr-3">
+              <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#review-form" data-bs-whatever="@mdo">Write a Product Review</a>
+            </div>
+            <div class="col-auto pr-3">
+              <a class="btn btn-danger" id="back-btn">Back</a>
+            </div>
+          </div>
+          </div>
         </div>
-        <div class="col-auto pr-3">
-          <a class="btn btn-danger" id="back-btn">Back</a>
-        </div>
-        
       </div>
-      
-      <b>Average Rating</b><p>{{prod.calculateAvgRating}}</p>
     </div>
-  </div>
+ 
+<!-- All Ratings and progress -->
   <div class="container my-4">
-    
-  {% for i in prodRatings%}
-  <div class="card my-3">
-    <div class="card-header" data-rating="{{i.rating}}">
-      
+    <div class="container">
+      <div class="row">
+        <div class="col order-last">
+          {% for i in prodRatings%}
+          <div class="card my-3">
+            <div class="card-header" data-rating="{{i.rating}}">
+            </div>
+            <div class="card-body">
+              <!-- <h5 class="card-title">Special title treatment</h5> -->
+              <p class="card-text">{{i.comment}}</p>
+              <a href="#" class="btn btn-success btn-sm">Helpful</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="col">
+          Second in DOM, unordered
+        </div>
+      </div>
     </div>
-    <div class="card-body">
-      <!-- <h5 class="card-title">Special title treatment</h5> -->
-      <p class="card-text">{{i.comment}}</p>
-      <a href="#" class="btn btn-success btn-sm">Helpful</a>
-    </div>
-  </div>
-
-  {% endfor %}
+</div>
 
 </div>
-</div>
-
 {% endblock body %}
+<!-- Body tag ends here -->
