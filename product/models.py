@@ -23,6 +23,13 @@ class Product(models.Model):
         else:
             return 0
 
+    @property
+    def calculateNumberOfRatings(self):
+        allRating = self.productrating_set.all()
+        numberOfRatings = allRating.count()
+        print(allRating.count())
+        return numberOfRatings
+
 
 
 

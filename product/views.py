@@ -16,6 +16,7 @@ def index(request):
 def detail(request,pk):
     prod = Product.objects.get(id=pk)
     prodRatings = ProductRating.objects.filter(product=prod)
+    prodRatings = prodRatings.order_by('-created')
     return render(request,'detail.html',context={'prod':prod,'prodRatings':prodRatings})
 
 

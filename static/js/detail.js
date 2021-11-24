@@ -1,9 +1,7 @@
-console.log("Detail page")
-
 const prodCards = [...document.getElementsByClassName('card-header')]
 const stars = [...document.getElementsByClassName('stars')]
 const url = window.location.href
-console.log(url)
+console.log(prodCards)
 console.log("Star",stars)
 prodCards.forEach((c)=>{
     const rating = c.getAttribute('data-rating')
@@ -72,7 +70,6 @@ const reviewForm = document.getElementById('review-form')
 reviewForm.addEventListener('submit',e=>{
     e.preventDefault()
     sendData()
-    // console.log("sdj")
 })
 
 
@@ -81,5 +78,57 @@ document.getElementById('back-btn').addEventListener('click',()=>{
 })
 
 
+function progessbar(){
+    let ratings = []
+    let totalRatings = 0
+    let fiveStarRatings = 0
+    let fourStarRatings = 0
+    let threeStarRatings = 0
+    let twoStarRatings = 0
+    let oneStarRatings = 0
+    prodCards.forEach((i)=>{
+        let rating = i.getAttribute('data-rating')
+        if(rating == '5'){
+            fiveStarRatings +=1
+        }else if(rating == '4'){
+            fourStarRatings +=1
+        }else if(rating == '3'){
+            threeStarRatings +=1
+        }else if(rating == '2'){
+            twoStarRatings +=1
+        }else if(rating=='1'){
+            oneStarRatings +=1
+        }
+        ratings.push(rating)
+    })
+    totalRatings = ratings.length
+    fiveStarRatings = ((fiveStarRatings) / (totalRatings)) *100
+    fourStarRatings = ((fourStarRatings) / (totalRatings)) *100
+    threeStarRatings = ((threeStarRatings) / (totalRatings)) *100
+    twoStarRatings = ((twoStarRatings) / (totalRatings)) *100
+    oneStarRatings = ((oneStarRatings) / (totalRatings)) *100
 
+    allProgressBars = [...document.getElementsByClassName('progress-bar')]
+
+    allProgressBars.forEach((item)=>{
+        if(item.id == '5-star'){
+            item.style['width'] = fiveStarRatings + '%'
+        }
+        else if(item.id == '4-star'){
+            item.style['width'] = fourStarRatings + '%'
+        }
+        else if(item.id == '3-star'){
+            item.style['width'] = threeStarRatings + '%'
+        }
+        else if(item.id == '2-star'){
+            item.style['width'] = twoStarRatings + '%'
+        }
+        else if(item.id == '1-star'){
+            item.style['width'] = oneStarRatings + '%'
+        }
+    })
+ 
+}
+
+progessbar()
 

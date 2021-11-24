@@ -10,9 +10,9 @@
 {% block body %}
 <!-- Navbar starts here -->
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-warning">
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><b>Review</b></a>
+    <a class="navbar-brand" href="#"><i style="color:orange" class ="fa fa-star fa-lg"> </i>  Review </i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -41,16 +41,16 @@
         </li>
         
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search for a product..."
+      <form class="d-flex" id="search-form">
+        <input class="form-control me-2" id="search-txt" type="search" placeholder="Search for a product..."
           aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success"  type="submit">Search</button>
       </form>
     </div>
   </div>
 </nav>
 <!-- Navbar ends -->
-<div class="container" id="cont">
+<div class="container my-10" id="cont">
   {% for item in allProds%}
   <div class="card my-5 product-list-card" data-title="{{item.name}}"
     data-id={{item.id}} data-rating={{item.avgRating}} style="width: 38rem;">
@@ -66,8 +66,6 @@
       </div>
     </div>
   </div>
-
-
   {%endfor%}
 
 </div>
