@@ -16,17 +16,18 @@ prodCards.forEach((c)=>{
             if(i<=avgRating){
                 ratingBox.innerHTML += `<span><i style="color:orange" class ="fa fa-star fa-lg"></i></span>`
             }else{
-                ratingBox.innerHTML += `<span id="5" ><i  class ="fa fa-star-o fa-lg"></i></span>`
+                ratingBox.innerHTML += `<span id="5" ><i  class ="fa fa-star-o fa-lg" style="color:orange"></i></span>`
             }
 
         }else if(decimal != 0){
             if(i<=integerPart){
                 ratingBox.innerHTML += `<span><i style="color:orange" class ="fa fa-star fa-lg"></i></span>`
             }else if(i == integerPart+1){
-                ratingBox.innerHTML += `<span><i style="color:orange" class ="fa fa-star-half-o fa-lg"></i></span>`
+                ratingBox.innerHTML += `<span><i style="color:orange" class ="fa fa-star-half-o fa-lg" ></i></span>`
             }else{
-                ratingBox.innerHTML += `<span id="5" ><i  class ="fa fa-star-o fa-lg"></i></span>`
+                ratingBox.innerHTML += `<span id="5" ><i style="color:orange" class ="fa fa-star-o fa-lg"></i></span>`
             }
         }
     }  
 })
+

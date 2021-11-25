@@ -8,8 +8,9 @@ def index(request):
     allProds = Product.objects.all()
     allProdsList = []
     for r in allProds:
-        rdict = {'id':r.id,'name':r.name,'avgRating':r.calculateAvgRating}
+        rdict = {'id':r.id,'name':r.name,'image':r.image,'avgRating':r.calculateAvgRating}
         allProdsList.append(rdict)
+    print(allProdsList)
     return render(request,'index.html',context={'allProds':allProdsList})
 
 

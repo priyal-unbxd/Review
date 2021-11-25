@@ -4,6 +4,7 @@ from django.db.models.deletion import CASCADE
 # Create your models here.
 class Product(models.Model):
     name        = models.CharField(max_length=200)
+    image       = models.ImageField(upload_to='static\images')
 
     def __str__(self) :
         return self.name

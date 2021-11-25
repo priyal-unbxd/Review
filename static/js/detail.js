@@ -113,18 +113,25 @@ function progessbar(){
     allProgressBars.forEach((item)=>{
         if(item.id == '5-star'){
             item.style['width'] = fiveStarRatings + '%'
+            item.innerText = Math.round(fiveStarRatings) + '%'
+            console.log("Value of",item.value)
+            console.log(item)
         }
         else if(item.id == '4-star'){
             item.style['width'] = fourStarRatings + '%'
+            item.innerText = Math.round(fourStarRatings) + "%"
         }
         else if(item.id == '3-star'){
             item.style['width'] = threeStarRatings + '%'
+            item.innerText = Math.round(threeStarRatings) + '%'
         }
         else if(item.id == '2-star'){
             item.style['width'] = twoStarRatings + '%'
+            item.innerText = Math.round(twoStarRatings) + '%'
         }
         else if(item.id == '1-star'){
             item.style['width'] = oneStarRatings + '%'
+            item.innerText = Math.round(oneStarRatings) + '%'
         }
     })
  
