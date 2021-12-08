@@ -8,9 +8,7 @@ prodCards.forEach((c)=>{
     for(let i=1;i<6;i++){
         if(i<=rating){
             c.innerHTML += `
-               
                 <span><i style="color:orange" class ="fa fa-star"></i></span>
-                
             `
         }else{
             c.innerHTML += `<span id="5" ><i  class ="fa fa-star-o"></i></span>`
@@ -21,12 +19,15 @@ prodCards.forEach((c)=>{
 
 
 stars.forEach((c,idx)=> c.addEventListener('click',()=>{
+        
         stars.forEach((otherStar,otherIndx)=>{
             if(otherIndx <idx){
                 otherStar.classList.replace('fa-star-o','fa-star')
             }else if(otherIndx == idx){
                 otherStar.classList.replace('fa-star-o','fa-star')
                 otherStar.classList.add('checked')
+            }else{
+                otherStar.classList.add('fa-star-o')
             }
         })
     
@@ -41,13 +42,10 @@ const sendData = ()=>{
     const data = {}
     let rating = 0
     stars.forEach((star)=>{
-        
         if(star.classList.contains('checked')){
             rating = star.id
-            
         }
     })
-
 
     $.ajax({
         type: 'POST',
@@ -73,7 +71,7 @@ reviewForm.addEventListener('submit',e=>{
 
 
 document.getElementById('back-btn').addEventListener('click',()=>{
-    window.location.href = "http://localhost:8000/"
+    window.location.href = ".."
 })
 
 

@@ -24,9 +24,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-      
-      
-        
+  
       </ul>
       <form class="d-flex" id="search-form">
         {% csrf_token %}
@@ -48,11 +46,10 @@
       data-id={{item.id}} data-rating={{item.avgRating}} ">
         <img src={{item.image}} class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title"><a href="/{{item.id}}" style="text-decoration: none;">{{item.name}}</a></h5>
-          <div class="row">
-            <div class="col-2 "><div class="card-subtitle mb-2 text-muted" style="font-size:18px">{{item.avgRating}}</div></div>
-            <div class="col-10 p-0"><div class="rating-box" id="{{item.name}}{{item.id}}id"></div>
-          </div>
+          <h5 class="card-title"><a href="/{{item.id}}/" style="text-decoration: none;">{{item.name}}</a></h5>
+
+            <div ><div class="card-subtitle mb-2 text-muted" style="font-size:18px">{{item.avgRating}} out of 5</div></div>
+          <div><div class="rating-box" id="{{item.name}}{{item.id}}id"></div>
           <div class="my-3">
             <a class="btn btn-primary btn-sm" href="{{item.id}}/">View Product</a>
           </div>
