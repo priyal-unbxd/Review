@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {%load static %}
 
@@ -54,7 +53,7 @@
     <div class="card mb-3" style="max-width: 1200px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{% static 'images/hoodie.jpg'%}" class="img-fluid rounded-start" alt="...">
+          <img src="../{{imgLink}}" class="img-fluid rounded-start" alt="...">
         </div>
         
         <div class="col-md-8">
@@ -88,9 +87,10 @@
             </div>
             <div class="card-body">
               <!-- <h5 class="card-title">Special title treatment</h5> -->
-              <span class="card-text">{{i.comment}}</span>
-              <p class="mt-2" style="color: gray;font-size: 13px;">{{i.created}}</p>
-              <a class="badge rounded-pill bg-success">Helpful</a>
+              <p class="card-text">{{i.comment}}</p>
+              <p class="mt-2 mb-0" style="color: green;font-size: 10px;">{{i.helpful}} people find this helpful</p>
+              <p class="mt-0" style="color: gray;font-size: 10px;">Created at :{{i.created}}</p>
+              <a class="badge rounded-pill bg-success helpfulBtn mt-0" id="{{i.id}}"">Helpful</a>
             </div>
           </div>
           {% endfor %}

@@ -39,4 +39,4 @@ class ProductRating(models.Model):
     rating      = models.IntegerField(default=0)
     comment     = models.TextField(max_length=300)
     created     = models.DateTimeField(auto_now_add=True)
-
+    helpful     = models.IntegerField(default=0)

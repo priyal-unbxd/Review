@@ -16,9 +16,10 @@ def index(request):
 
 def detail(request,pk):
     prod = Product.objects.get(id=pk)
+    print(prod.image)
     prodRatings = ProductRating.objects.filter(product=prod)
     prodRatings = prodRatings.order_by('-created')
-    return render(request,'detail.html',context={'prod':prod,'prodRatings':prodRatings})
+    return render(request,'detail.html',context={'prod':prod,"imgLink":prod.image,'prodRatings':prodRatings})
 
 
 def savedetail(request,pk):
@@ -31,3 +32,17 @@ def savedetail(request,pk):
         comment = request.POST.get('comment')
         ProductRating.objects.create(product=product,rating=rating,comment=comment)
         return JsonResponse({"text":"works"})
+
+def search(request):
+    # if request.method == 'POST':
+    #     data = request.POST.get('word')
+    #     data_ = dict(data.lists())
+    #     data_.pop('csrfmiddlewaretoken')
+    #     print(data_)
+    #     prods = Product.objects.filter(name__contains = searched)
+    #     print(prods)
+    #     return JsonResponse({"results": prods})
+    # else:
+        print("No no") 
+        return JsonResponse({"text":"works"})
+    

@@ -8,8 +8,7 @@ prodCards.forEach((c)=>{
     const ratingBox = document.getElementById(name +id+'id')
     const decimal = avgRating - Math.floor(avgRating)
     const integerPart = avgRating - decimal
-    console.log(integerPart)
-    console.log(decimal)
+
 
     for(let i=1;i<6;i++){
         if(decimal == 0){
@@ -31,3 +30,24 @@ prodCards.forEach((c)=>{
     }  
 })
 
+const searchBtn = document.getElementById('submitBtn')
+searchBtn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    const word = document.getElementById("search-txt").value
+    const csrf = document.getElementsByName('csrfmiddlewaretoken')[0].value
+
+    $.ajax({
+        type: 'POST',
+        data: {'csrfmiddlewaretoken':csrf,'word': word},
+        url: `${window.location.href}search/`,
+        success: function(response){
+            console.log("Success")
+            console.log(response)
+        },
+        error: function(error){
+            console.log(error)
+        }
+
+    })
+    console.log(word)
+})
