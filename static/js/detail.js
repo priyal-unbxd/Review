@@ -1,8 +1,7 @@
 const prodCards = [...document.getElementsByClassName('card-header')]
 const stars = [...document.getElementsByClassName('stars')]
 const url = window.location.href
-console.log(prodCards)
-console.log("Star",stars)
+
 prodCards.forEach((c)=>{
     const rating = c.getAttribute('data-rating')
 
@@ -136,5 +135,28 @@ function progessbar(){
     })
  
 }
+
+
+let helpfulBtns = [...document.getElementsByClassName('helpfulBtn')]
+helpfulBtns.forEach((btn)=>btn.addEventListener('click',(e)=>{
+    const csrf = document.getElementsByName('csrfmiddlewaretoken')[0].value
+    const id = btn.id
+    console.log(id)
+    $.ajax({
+        type: 'POST',
+        url : `${url}${id}/update`,
+        data: {'csrfmiddlewaretoken':csrf,'comment': "I am herer"},
+        success: function(response){
+            console.log("It works")
+            console.log(response['result'])
+            window.location.href = "."
+            
+        },
+        error: function(response){
+            console.log('error')
+        }
+    })
+    
+}))
 
 progessbar()

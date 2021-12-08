@@ -1,4 +1,4 @@
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse,HttpResponse
 from django.shortcuts import render
 from .models import Product, ProductRating
 import json
@@ -45,4 +45,9 @@ def search(request):
     # else:
         print("No no") 
         return JsonResponse({"text":"works"})
-    
+
+def updateHelpful(request,pk1,pk2):
+    prodrating = ProductRating.objects.get(id=pk2)
+    prodrating.helpful += 1
+    prodrating.save()
+    return JsonResponse({"result":"success"})   
